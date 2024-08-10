@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Producer": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7021",
+      "environmentVariables": {
+      }
+    }
+  }
+}
