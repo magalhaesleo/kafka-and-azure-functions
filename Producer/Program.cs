@@ -12,11 +12,7 @@ var host = new HostBuilder()
     })
     .ConfigureServices((context, services) =>
     {
-        services.AddSingleton<IMongoClient, MongoClient>(provider =>
-        {
-            var connString = context.Configuration.GetConnectionString("MongoDB");
-            return new MongoClient(connString);
-        });
+        services.AddSingleton<IMongoClient>(new MongoClient(context.Configuration.GetConnectionString("MongoDB")));
         services.AddTransient(provider => provider.GetRequiredService<IMongoClient>().GetDatabase("transactions"));
     })
     .Build();
