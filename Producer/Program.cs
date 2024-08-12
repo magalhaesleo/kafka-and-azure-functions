@@ -5,6 +5,11 @@ using MongoDB.Driver;
 
 var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
+    .ConfigureAppConfiguration((context, config) =>
+    {
+        if (context.HostingEnvironment.IsDevelopment())
+            config.AddUserSecrets<Program>();
+    })
     .ConfigureServices((context, services) =>
     {
         services.AddSingleton<IMongoClient, MongoClient>(provider =>

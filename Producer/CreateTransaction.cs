@@ -18,9 +18,9 @@ namespace Producer
 
             var response = req.CreateResponse(HttpStatusCode.OK);
             response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-
+            
             var transactions = mongoDatabase.GetCollection<Transaction>("operations");
-
+            
             await transactions.InsertOneAsync(new Transaction { Amount = (decimal)Random.Shared.NextDouble() });
 
             await response.WriteStringAsync("Welcome to Azure Functions!");
