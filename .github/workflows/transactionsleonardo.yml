@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: echo
-      run: echo "$LEONARDO"
+      run: echo "$TEST"
+      env:
+        TEST: ${{ vars.LEONARDO }}
     - uses: actions/checkout@v4
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v3
